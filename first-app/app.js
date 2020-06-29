@@ -51,14 +51,12 @@ emitter.on("messagelogged",(e)=>{
 console.log("listener called", e);
 } ) 
 
-// raise an event
-//making a noise passing an event. from emitter.on.
-emitter.emit("messagelogged",{
-    id : 1, 
-    url:'http://'
-});
+// loading the log function from logger.
+const log =require('./logger');
+log('message');
 
-// raise:logging event (data:message)
+
+
 
 
 
