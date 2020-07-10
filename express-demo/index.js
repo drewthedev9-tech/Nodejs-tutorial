@@ -1,9 +1,33 @@
+const config = require('config');
+const morgan = require('morgan');
+const helmet = require('helmet');
 const Joi = require('joi');
+const logger = require('./logger');
 const express = require("express");
 // calling express function from frameworks
 const app = express();
 // adding the middlwware for jso. handling
 app.use(express.json());
+// next passes control to the next middleware function
+// in the pipeline.
+app.use(function(req,res,next){
+    console.log('logging.....');
+    next();
+})
+app.use(helmet());
+
+
+// Configuration ////////////
+console.log("Application name" + config.get('name'));
+console.log("Mail server" + config.get('mail.host'));
+console.log("Mail password" + config.get('mail.password'));
+
+// custom middleware in the 
+app.use(logger);
+if(app.get('env') === 'development'){
+    app.use(morgan('tiny')); 
+    console.log('Morgan enabled...');
+}
 
 const courses = [
     { id:1, name: 'course1'},
@@ -25,8 +49,6 @@ app.get('/api/courses', (req,res)=>{
 });
 
 app.get('/api/courses/:id', (req,res)=>{
-
-
 
     const course =  courses.find(c => c.id === parseInt(req.params.id));
     if (!course) {
@@ -86,7 +108,7 @@ app.delete('/api/courses/:id',(req,res)=>{
         res.status(404).send('the course with the given ID was not found.');// 404 bad request 
         return;
     }
-   
+
     // delete.
     const index = course.indexOf(course);
     courses.splice(index, 1);
