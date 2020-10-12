@@ -22,9 +22,10 @@ router.get('/', (req,res)=>{
 });
 
 router.get('/:id', (req,res)=>{
-
+    // parseInt gloabla JS variable turn string into integer
     const course =  courses.find(c => c.id === parseInt(req.params.id));
     if (!course) {
+        // 404 - object not found.
         res.status(404).send('the course with the given ID was not found.');// 404 bad request 
         return;
     }

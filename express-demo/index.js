@@ -29,9 +29,9 @@ app.use('/', home);
 
 
 // Configuration ////////////
-console.log("Application name" + config.get('name'));
-console.log("Mail server" + config.get('mail.host'));
-console.log("Mail password" + config.get('mail.password'));
+// console.log("Application name" + config.get('name'));
+// console.log("Mail server" + config.get('mail.host'));
+// console.log("Mail password" + config.get('mail.password'));
 
 // custom middleware in the 
 app.use(logger);
