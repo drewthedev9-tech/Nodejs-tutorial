@@ -32,7 +32,7 @@ app.use('/', home);
 // console.log("Mail server" + config.get('mail.host'));
 // console.log("Mail password" + config.get('mail.password'));
 
-// custom middleware in the 
+// custom middleware in the middleware folder
 app.use(logger);
 if(app.get('env') === 'development'){
     app.use(morgan('tiny')); 

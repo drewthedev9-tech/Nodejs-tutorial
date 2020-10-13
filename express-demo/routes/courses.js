@@ -63,8 +63,8 @@ const course =  courses.find(c => c.id === parseInt(req.params.id));
 }
     
 
-const {error} = validateCourse(req.body);// object destructuring result.error.
-if (error){
+const result = validateCourse(req.body);// object destructuring result.error.
+if (result.error){
       res.status(400).send(result.error.details[0].message);  
       return;
     }
