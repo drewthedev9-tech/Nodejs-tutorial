@@ -36,8 +36,9 @@ router.get('/:id', (req,res)=>{
 // post methods  adding a name to course array.
 router.post('/', (req, res)=>{
     //input validation of error.
-    const {error} = validateCourse(req.body);
-    if (error){
+    const result = validateCourse(req.body);
+    if (result.error){
+        // getting the details array from response of using Joi validation.
         res.status(400).send(result.error.details[0].message);  
         return;
       }
@@ -86,7 +87,9 @@ router.delete('/api/courses/:id',(req,res)=>{
     }
 
     // delete request
+    // find the index from course above
     const index = course.indexOf(course);
+    // cut out based on that index see MDN docs.
     courses.splice(index, 1);
     // return the same course.
     res.send(course);

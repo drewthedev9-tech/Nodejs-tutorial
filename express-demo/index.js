@@ -1,5 +1,4 @@
 const debug  = require('debug')('app:startup');
-
 const config = require('config');
 const morgan = require('morgan');
 const helmet = require('helmet');
