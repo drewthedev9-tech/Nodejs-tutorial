@@ -1,4 +1,7 @@
  const express = require('express');
+//  router is used whn we seprate the files for easy structure
+// of all the applications code was in one fiel woould be app - see
+// structuring express applications - advanced topics.
  const router = express.Router();
  const Joi = require('joi');
 
@@ -106,4 +109,5 @@ function validateCourse(course){
     return Joi.validate(course, schema);
 }
 
+// exporting router module that we imoprted at top to use in other modules.
 module.exports = router;
