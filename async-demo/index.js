@@ -26,3 +26,6 @@ function getRepositories(username, callback){
     }, 2000);
    
 }
+
+// async await approach
+
