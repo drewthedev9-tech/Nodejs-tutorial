@@ -24,7 +24,10 @@ async function getCoursesExc3() {
   .find({ isPublished: true})
 //   $gte is greater than or equal to "mongoDB operators".
   .or([
-      {price:{$gte: 15}}
+      {price:{$gte: 15}},
+    //reg-ex: 0 or more chareters before and after the word "by".
+  {name: /.*by.*/}
+
   ])
 //   desc order
   .sort({price:-1})

@@ -24,6 +24,7 @@ async function getCoursesExc2() {
   .find({ isPublished: true, tags: {$in:['frontend','backend']}})
 //   desc order
   .sort({price:-1})
+  // get name,author, price
   .select(' name author price' );
 
   console.log(courses);
