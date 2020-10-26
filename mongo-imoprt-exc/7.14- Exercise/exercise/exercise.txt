@@ -1,0 +1,4 @@
+// make sure you start up mongodb servoces frst brore imoprting into it.
+//also you have to be in the directory
+
+mongoimport --db mongo-exercises --collection courses --drop --file exercise-data.json --jsonArray
